@@ -1,0 +1,35 @@
+가상환경 실행
+activate somenail
+경로 이동
+cd C:\Users\smhrd\yolov5\yolov5
+
+
+-----학습-----
+
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights yolov5x.pt --batch 6 --worker 4 --epochs 300 --name v8t2test300 --patience 300
+
+--data : data.yaml 경로
+--cfg :  
+--weights : 가중치(x모델이 제일 좋은 모델)(정확도에 영향을 끼침)
+--batch : 이 컴퓨터로는 6이 한계(한번에 학습하는 사진의 숫자)(속도에 영향을 끼침)
+--worker : 한번에 들어가는 인부 수(속도에 영향을 끼침)
+--epochs : 학습 횟수(정확도에 영향을 끼침)
+->>>> epochs 의 기본값은 300 -> 300돌리고 나온 결과가 과접합이 아닐시 600으로 증가 
+--patience : 조기종료를 방지(0 or 300 입력) ->> 300으로 하렴
+
+----예측----
+
+python detect.py --source ./det/ --weights C:\Users\smhrd\yolov5\yolov5\runs\train\test200\weights\best.pt 
+
+- 주피터 노트에서 실행됨 ->> flask를 위해 주피터에서 실행하는것!
+--source : 예측할 사진이 저장된 폴더 경로
+--weights : 예측을 돌릴 모델이 있는 폴도 경로
+->>> best.pt : 가장 좋은 모델 ->> 이거 사용!
+->> last.pt : 가장 마지막 모델
+
+-- 예측 파라미터 --
+--save-txt : 예측 결과를 텍스트에 저장(클래스와 경로로 표시)
+--name : 이름
+--project : 저장될 파일 경로
+--save-crop : 클래스별로 사진 저장
+--conf 0.6 : 60퍼 센트 이상의 정확도인 라벨만 가져온다!

@@ -1,0 +1,7 @@
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights yolov5x.pt --batch 6 --worker 4 --epochs 500 --name v8t2test1437_high_epochs500 --patience 300
+
+
+!python detect.py --source C:\Users\smhrd\git\thumbnail\Thumbnail\src\main\webapp\resources\image\$user_nail_name --weights user_nail_yolo --save-txt --name nail_design --save-crop
+
+
+

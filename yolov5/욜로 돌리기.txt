@@ -1,0 +1,31 @@
+----- yolov5 실행 ------
+
+0. 가상환경 생성
+conda create -n 이름 python = 환경설정시 알맞은 버전
+
+1. 가상환경 실행
+activate somenail
+
+2. pytorch 설치
+https://pytorch.org/get-started/locally/
+
+3. 가상환경의 주피터 노트 설치
+conda install jupyter notebook
+
+4. git 설치(git clone)
+conda install git
+
+5. 주피터 노트에 yolov5 환경구축
+
+------- labelimg 실행 -----
+
+0. 가상환경 실행
+activate somenail
+
+1. 실행 환경으로 이동
+cd C:\Users\smhrd\yolov5\labelimg
+
+2. labelimg 실행
+python labelImg.py -> 단순하게 실행
+python labelImg.py [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
+python labelImg.py C:\Users\smhrd\Desktop\label\images C:\Users\smhrd\Desktop\label\predefined_classes.txt
