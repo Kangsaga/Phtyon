@@ -1,0 +1,86 @@
+detect.py 는 훈련이 끝난뒤 사용한다
+train.py 는 새로운 모델을 훈련할 때 사용
+
+0번이 정상 1번이 질병
+
+가상환경 들어가기
+activate yolov5_test
+
+학습시키기(무조건 cmd)
+0. 아나콘다 프롬프트 실행 -> 가상환경 activate -> cd C:\Users\smhrd\yolov5\yolov5
+
+1. ~~~.yaml 파일로 학습
+
+2. 
+학습시키는 코드
+python train.py --data ./data/data.yaml --cfg /models/yolov5x.yaml -- weights yolov5x.pt -- batch 6 --worker 4 -- epochs 60 --name tomato_test200 --patience 300
+
+
+2-1 모델 종류 : x > l > m > s ->>> x가 가장 정확함
+2-2. 파라미터 종류 : batch : 한번에 학습 시키는 사진의 수( 속도와 관련)
+		worker : 한번에 일하는 횟수(사람)(속도와 관련) 
+		epochs : 학습 횟수 (  기본값 - 300)(정확도와 관련)
+		name : 저장되는 파일 이름
+		patience : 조기종료 방지(300주면 됨)
+
+
+
+
+
+학습시키기(yolo5폴더에서 실행해야됨) 
+python train.py --data ./data/data.yaml --cfg /models/yolov5x.yaml -- weights yolov5x.pt -- batch 8 --worker 4 -- epochs 60 --name tomato_test200
+
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights yolov5x.pt --batch 16 --worker 4 --epochs 200 --name tomatot200
+
+
+m모델
+python train.py --data ./data/data.yaml --cfg ./models/yolov5m.yaml --weights yolov5m.pt --batch 16 --worker 4 --epochs 200 --name tomato_m100
+
+l모델
+python train.py --data ./data/data.yaml --cfg ./models/yolov5l.yaml --weights yolov5l.pt --batch 12 --worker 4 --epochs 200 --name tomato_l7000
+
+x모델
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights yolov5x.pt --batch 4 --worker 4 --epochs 200 --name tomato_x100
+
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights yolov5x.pt --batch 6 --worker 4 --epochs 200 --name tomato_x10000
+
+--final--
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights yolov5x.pt --batch 6 --worker 4 --epochs 200 --name t7v3_200 --patience 300(조기종료 방지)
+
+-- 100번 돌린 모델을 weights에 넣고 학습 --
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights C:/Users/smhrd/openCV/yolov5/runs/train/t7v3_100/weights/best.pt --batch 6 --worker 4 --epochs 200 --name t7v3_200_add --patience 300(조기종료 방지)
+
+C:/Users/smhrd/openCV/yolov5/runs/train/t7v3_100/weights/best.pt
+
+-- weight 없이 훈련 --
+python train.py --data ./data/data.yaml --cfg ./models/yolov5x.yaml --weights '' --batch 6 --worker 4 --epochs 100 --name t7v3_noweight --patience 300
+
+
+
+테스트하기
+python detect.py --source ../test --weights .주소값/best.pt
+
+python detect.py --source ../test --weights .주소값/best.pt
+
+python detect.py --source C:\Users\yolo\tomatot_test --weights 
+
+---------------
+python detect.py --source ./det/ --weights C:/Users/smhrd/openCV/yolov5/runs/train/t7v3_200_add/weights/best.pt --save-txt --name t7v3_200_add
+
+
+오셨나요?넵
+선생님
+저기 노랑색 오류가 인코딩 문제라는데
+검색을 해봐도 잘안나와서요 
+
+혹시 다음작업이 진행이 안되나요 ?
+아뇨 아직 진행 안했는데
+저번에도 인코딩 오류 떳을 때 그 다음이 안됬어서
+새로 가상환경 만들어서 하는 중이라서 해결해야 될거 같아서요 ㅠ
+
+흠 .. 제가 생각하기론 setup.cfg 파일에 인코딩하는 속성이 없어서 파이썬 시작할때 오류가 발생한거같아서 해당 속성을 추가해봤는데 아까 뜨던 오류가 상당부분 줄어들긴했는데
+나머지는 그대로 뜨네요 .. 일단 한번 진행해볼래요 ?
+그럼 일단 진행해보겠습니다! 그리고 선생님!
+어제 말씀드린거 알수있을까요?yolo 말하는건가요 ?
+넵넵 json 파일  바꾸는거요!아녀 .. 조금만더 기다려주세요
+네네 알겠습니다 감사합니다!!!넹:)
